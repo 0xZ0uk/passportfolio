@@ -4,7 +4,6 @@ import React from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Button from "../components/Button";
 import Header from "../components/Header";
-import Project from "../components/Project";
 import Rotator from "../components/Rotator";
 import styles from "../styles/Home.module.scss";
 
