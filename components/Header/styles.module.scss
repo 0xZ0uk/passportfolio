@@ -6,6 +6,33 @@
   min-width: 95%;
   margin: 0 auto;
   border-radius: 50px;
+  background-color: #024f3c;
   box-shadow: inset 0.2em 0.2em 0.2em 0 rgba(255, 255, 255, 0.1),
     inset -0.2em -0.2em 0.2em 0 rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  justify-content: space-between;
+
+  .logo {
+    flex-basis: 8.3333%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }
+
+  .menu {
+    flex-basis: 8.3333% * 5;
+
+    &Wrapper {
+      color: #fff;
+      list-style: none;
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    &Item {
+      cursor: pointer;
+    }
+  }
 }

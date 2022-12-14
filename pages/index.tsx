@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import Head from "next/head";
 import React from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
@@ -7,8 +6,43 @@ import Header from "../components/Header";
 import Rotator from "../components/Rotator";
 import styles from "../styles/Home.module.scss";
 
+const mock = [
+  {
+    title: "1",
+    description:
+      "While having drinks with Tibor Kalman one night, he told me, “When you make something no one hates, no one fucking loves it.” Creativity requires fucking tenacity. Most of your accomplishments will be demonstrations of tenacity, not talent. Someday is not a fucking day of the week. Be fucking bold.",
+  },
+  {
+    title: "2",
+    description:
+      "While having drinks with Tibor Kalman one night, he told me, “When you make something no one hates, no one fucking loves it.” Creativity requires fucking tenacity. Most of your accomplishments will be demonstrations of tenacity, not talent. Someday is not a fucking day of the week. Be fucking bold.",
+  },
+  {
+    title: "3",
+    description:
+      "While having drinks with Tibor Kalman one night, he told me, “When you make something no one hates, no one fucking loves it.” Creativity requires fucking tenacity. Most of your accomplishments will be demonstrations of tenacity, not talent. Someday is not a fucking day of the week. Be fucking bold.",
+  },
+  {
+    title: "4",
+    description:
+      "While having drinks with Tibor Kalman one night, he told me, “When you make something no one hates, no one fucking loves it.” Creativity requires fucking tenacity. Most of your accomplishments will be demonstrations of tenacity, not talent. Someday is not a fucking day of the week. Be fucking bold.",
+  },
+];
+
 export default function Home() {
   const [active, setActive] = React.useState<number>(0);
+
+  const handleChange = (type: "next" | "back") => {
+    switch (type) {
+      case "back":
+        active === 0 ? setActive(mock.length - 1) : setActive(active - 1);
+        break;
+      case "next":
+      default:
+        active === mock.length - 1 ? setActive(0) : setActive(active + 1);
+        break;
+    }
+  };
 
   return (
     <div>
@@ -24,40 +58,16 @@ export default function Home() {
           <Button
             className={styles.next}
             label={<FaChevronRight size={25} />}
-            onClick={() => setActive(active + 1)}
+            onClick={() => handleChange("next")}
           />
           <Button
             className={styles.back}
             label={<FaChevronLeft size={25} />}
-            onClick={() => setActive(active - 1)}
+            onClick={() => handleChange("back")}
           />
         </div>
 
-        <Rotator
-          active={active}
-          projects={[
-            {
-              title: "Hello World",
-              description:
-                "While having drinks with Tibor Kalman one night, he told me, “When you make something no one hates, no one fucking loves it.” Creativity requires fucking tenacity. Most of your accomplishments will be demonstrations of tenacity, not talent. Someday is not a fucking day of the week. Be fucking bold.",
-            },
-            {
-              title: "Hello World",
-              description:
-                "While having drinks with Tibor Kalman one night, he told me, “When you make something no one hates, no one fucking loves it.” Creativity requires fucking tenacity. Most of your accomplishments will be demonstrations of tenacity, not talent. Someday is not a fucking day of the week. Be fucking bold.",
-            },
-            {
-              title: "Hello World",
-              description:
-                "While having drinks with Tibor Kalman one night, he told me, “When you make something no one hates, no one fucking loves it.” Creativity requires fucking tenacity. Most of your accomplishments will be demonstrations of tenacity, not talent. Someday is not a fucking day of the week. Be fucking bold.",
-            },
-            {
-              title: "Hello World",
-              description:
-                "While having drinks with Tibor Kalman one night, he told me, “When you make something no one hates, no one fucking loves it.” Creativity requires fucking tenacity. Most of your accomplishments will be demonstrations of tenacity, not talent. Someday is not a fucking day of the week. Be fucking bold.",
-            },
-          ]}
-        />
+        <Rotator active={active} projects={mock} />
       </main>
     </div>
   );
