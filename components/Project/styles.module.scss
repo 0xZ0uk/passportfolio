@@ -1,0 +1,28 @@
+$box-height: 350px;
+$transform-boxes: $box-height * 3;
+
+.displayer {
+  position: absolute;
+  background-color: #024f3c;
+  box-shadow: inset 0.2em 0.2em 0.2em 0 rgba(255, 255, 255, 0.1),
+    inset -0.2em -0.2em 0.2em 0 rgba(0, 0, 0, 0.1);
+  height: $box-height;
+  width: calc($box-height * 1.75);
+  border-radius: $box-height;
+
+  &:nth-child(1) {
+    transform: translate(0, -$transform-boxes) rotateZ(0deg);
+  }
+
+  &:nth-child(2) {
+    transform: translate($transform-boxes, 0) rotateZ(90deg);
+  }
+
+  &:nth-child(3) {
+    transform: translate(0, $transform-boxes) rotateZ(180deg);
+  }
+
+  &:nth-child(4) {
+    transform: translate(-$transform-boxes, 0) rotateZ(270deg);
+  }
+}

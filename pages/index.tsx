@@ -1,11 +1,15 @@
-import classNames from 'classnames'
-import Head from 'next/head'
-import React from 'react'
-import styles from '../styles/Home.module.scss'
+import classNames from "classnames";
+import Head from "next/head";
+import React from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import Button from "../components/Button";
+import Header from "../components/Header";
+import Project from "../components/Project";
+import Rotator from "../components/Rotator";
+import styles from "../styles/Home.module.scss";
 
 export default function Home() {
-  const [displyers, setDisplayers] = React.useState<number[]>([0,1,2,3])
-  const [active, setActive] = React.useState<number>(0)
+  const [active, setActive] = React.useState<number>(0);
 
   return (
     <div>
@@ -16,13 +20,46 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-      <button className={styles.next} onClick={() => setActive(active + 1)}>Next</button>
-      <div className={styles.container} style={{ transform: `translateY(${450 * 3}px) rotateZ(${active * 90}deg)` }}>
-        {displyers.map((elem, index) => ( 
-          <div key={elem} className={classNames(styles.displayer)}></div>
-        ))}
-      </div>
-      </main> 
+        <Header />
+        <div className={styles.controls}>
+          <Button
+            className={styles.next}
+            label={<FaChevronRight size={25} />}
+            onClick={() => setActive(active + 1)}
+          />
+          <Button
+            className={styles.back}
+            label={<FaChevronLeft size={25} />}
+            onClick={() => setActive(active - 1)}
+          />
+        </div>
+
+        <Rotator
+          active={active}
+          projects={[
+            {
+              title: "Hello World",
+              description:
+                "While having drinks with Tibor Kalman one night, he told me, “When you make something no one hates, no one fucking loves it.” Creativity requires fucking tenacity. Most of your accomplishments will be demonstrations of tenacity, not talent. Someday is not a fucking day of the week. Be fucking bold.",
+            },
+            {
+              title: "Hello World",
+              description:
+                "While having drinks with Tibor Kalman one night, he told me, “When you make something no one hates, no one fucking loves it.” Creativity requires fucking tenacity. Most of your accomplishments will be demonstrations of tenacity, not talent. Someday is not a fucking day of the week. Be fucking bold.",
+            },
+            {
+              title: "Hello World",
+              description:
+                "While having drinks with Tibor Kalman one night, he told me, “When you make something no one hates, no one fucking loves it.” Creativity requires fucking tenacity. Most of your accomplishments will be demonstrations of tenacity, not talent. Someday is not a fucking day of the week. Be fucking bold.",
+            },
+            {
+              title: "Hello World",
+              description:
+                "While having drinks with Tibor Kalman one night, he told me, “When you make something no one hates, no one fucking loves it.” Creativity requires fucking tenacity. Most of your accomplishments will be demonstrations of tenacity, not talent. Someday is not a fucking day of the week. Be fucking bold.",
+            },
+          ]}
+        />
+      </main>
     </div>
-  )
+  );
 }

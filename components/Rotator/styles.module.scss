@@ -1,0 +1,19 @@
+$box-height: 350px;
+
+.container {
+  height: $box-height;
+  width: calc($box-height * 1.75);
+  transition: transform cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition-duration: 1.2s;
+}
+
+.info {
+  width: calc($box-height * 1.75);
+  margin: 20px auto;
+  text-align: center;
+}
+
+.title,
+.description {
+  color: #fff;
+}
